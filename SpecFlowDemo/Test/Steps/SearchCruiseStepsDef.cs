@@ -30,18 +30,52 @@ namespace Test.Steps
         public void WhenIClickOnSAILTO()
         {
             _searchCruise.SelectSailTo();
-            //_searchCruise.SelectSailFrom();
-            //_searchCruise.SelectSailCalendar();
-            //_searchCruise.SelectSailDuration();
-            //_searchCruise.SelectSailTo();
         }
 
-        [When(@"I select sail to ""(.*)""")]
-        public void WhenISelectSailTo(string destiny)
+        [When(@"I click on SAIL FROM")]
+        public void WhenIClickOnSAILFROM()
         {
-            _searchCruise.SelectSailToOption(destiny);
+            _searchCruise.SelectSailFrom();
         }
 
+        [When(@"I click on DATES")]
+        public void WhenIClickOnDATES()
+        {
+            _searchCruise.SelectSailDuration();
+        }
+
+        [When(@"I click on DURATION")]
+        public void WhenIClickOnDURATION()
+        {
+            _searchCruise.SelectSailDuration();
+        }
+        
+        [When(@"I select sail from ""(.*)""")]
+        [When(@"I select sail to ""(.*)""")]
+        [When(@"I select duration ""(.*)"" days")]
+        public void WhenISelectSailFrom(string option)
+        {
+            _searchCruise.SelectOption(option);
+        }
+        /*
+        [When(@"I select sail to ""(.*)""")]
+        public void WhenISelectSailTo(string option)
+        {
+            _searchCruise.SelectOption(option);
+        }
+        */
+        [When(@"I select as date ""(.*)""")]
+        public void WhenISelectAsDate(string p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
+        /*
+        [When(@"I select duration ""(.*)"" days")]
+        public void WhenISelectDurationDays(string option)
+        {
+            _searchCruise.SelectOption(option);
+        }
+        */
         [When(@"I press SEARCH CRUISES")]
         public void WhenIPressSEARCHCRUISES()
         {

@@ -64,22 +64,123 @@ namespace Test.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 6
+#line 7
+ testRunner.Given("I have entered Carnival search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Searching cruises to Alaska")]
+        [NUnit.Framework.CategoryAttribute("done")]
         [NUnit.Framework.CategoryAttribute("search")]
+        [NUnit.Framework.CategoryAttribute("by")]
+        [NUnit.Framework.CategoryAttribute("sail")]
+        [NUnit.Framework.CategoryAttribute("to")]
         public virtual void SearchingCruisesToAlaska()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Searching cruises to Alaska", new string[] {
-                        "search"});
-#line 7
-this.ScenarioSetup(scenarioInfo);
-#line 8
- testRunner.Given("I have entered Carnival search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
- testRunner.When("I click on SAIL TO", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
-  testRunner.And("I select sail to \"Alaska\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        "done",
+                        "search",
+                        "by",
+                        "sail",
+                        "to"});
 #line 11
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 12
+ testRunner.When("I click on SAIL TO", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 13
+  testRunner.And("I select sail to \"Alaska\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.Then("the result should display some cruises", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Searching cruises from Miami")]
+        [NUnit.Framework.CategoryAttribute("done")]
+        [NUnit.Framework.CategoryAttribute("search")]
+        [NUnit.Framework.CategoryAttribute("by")]
+        [NUnit.Framework.CategoryAttribute("sail")]
+        [NUnit.Framework.CategoryAttribute("from")]
+        public virtual void SearchingCruisesFromMiami()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Searching cruises from Miami", new string[] {
+                        "done",
+                        "search",
+                        "by",
+                        "sail",
+                        "from"});
+#line 18
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 19
+ testRunner.When("I click on SAIL FROM", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
+  testRunner.And("I select sail from \"Miami\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
+ testRunner.Then("the result should display some cruises", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Searching cruises by dates")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.CategoryAttribute("wip")]
+        [NUnit.Framework.CategoryAttribute("search")]
+        [NUnit.Framework.CategoryAttribute("by")]
+        [NUnit.Framework.CategoryAttribute("dates")]
+        public virtual void SearchingCruisesByDates()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Searching cruises by dates", new string[] {
+                        "ignore",
+                        "wip",
+                        "search",
+                        "by",
+                        "dates"});
+#line 26
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 27
+ testRunner.When("I click on DATES", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
+  testRunner.And("I select as date \"2017, Feb\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 29
+ testRunner.Then("the result should display some cruises", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Searching cruises by duration")]
+        [NUnit.Framework.CategoryAttribute("done")]
+        [NUnit.Framework.CategoryAttribute("search")]
+        [NUnit.Framework.CategoryAttribute("by")]
+        [NUnit.Framework.CategoryAttribute("duration")]
+        public virtual void SearchingCruisesByDuration()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Searching cruises by duration", new string[] {
+                        "done",
+                        "search",
+                        "by",
+                        "duration"});
+#line 33
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 34
+ testRunner.When("I click on DURATION", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 35
+  testRunner.And("I select duration \"6 - 9\" days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 36
  testRunner.Then("the result should display some cruises", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -109,15 +210,15 @@ this.ScenarioSetup(scenarioInfo);
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Searching cruises", @__tags);
-#line 15
+#line 40
 this.ScenarioSetup(scenarioInfo);
-#line 16
- testRunner.Given("I have entered Carnival search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 17
+#line 6
+this.FeatureBackground();
+#line 41
  testRunner.When("I click on SAIL TO", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 18
+#line 42
   testRunner.And(string.Format("I select sail to \"{0}\"", to), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 19
+#line 43
  testRunner.Then("the result should display some cruises", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

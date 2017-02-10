@@ -14,72 +14,28 @@ namespace Framework.Pages
     public class SearchCruisePage : BasePage
     {
         #region Optional flow
-        private const string IdForImproveShoppingExperienceButtonNo = @"modal-beta-no";
-        [FindsBy(How = How.Id, Using = IdForImproveShoppingExperienceButtonNo)]
-        private IWebElement ImproveShoppingExperienceButtonNo;
-
-        private const string IdForImproveShoppingExperienceButtonYes = @"modal-beta-yes";
-        [FindsBy(How = How.Id, Using = IdForImproveShoppingExperienceButtonYes)]
-        private IWebElement ImproveShoppingExperienceButtonYes;
+        private By ImproveShoppingExperienceButtonNo = By.Id(@"modal-beta-no");
+        private By ImproveShoppingExperienceButtonYes = By.Id(@"modal-beta-yes");
         #endregion
 
-        #region Filters
-        private const string CssSelectorForSailTo = @"li.sail-to";
-        private By SailToButton = By.CssSelector(CssSelectorForSailTo);
-        //[FindsBy(How = How.CssSelector, Using = CssSelectorForSailTo)]
-        //private IWebElement SailToButton;
-
-        private const string CssSelectorForSailFrom = @"li.sail-from";
-        private By SailFromButton = By.CssSelector(CssSelectorForSailFrom);
-        //[FindsBy(How = How.CssSelector, Using = CssSelectorForSailFrom)]
-        //private IWebElement SailFromButton;
-
-        private const string CssSelectorForSailCalendar = @"li.sail-calendar";
-        private By SailCalendarButton = By.CssSelector(CssSelectorForSailCalendar);
-        //[FindsBy(How = How.CssSelector, Using = CssSelectorForSailCalendar)]
-        //private IWebElement SailCalendarButton;
-
-        private const string CssSelectorForSailDuration = @"li.sail-duration";
-        private By SailDurationButton = By.CssSelector(CssSelectorForSailDuration);
-        //[FindsBy(How = How.CssSelector, Using = CssSelectorForSailDuration)]
-        //private IWebElement SailDurationButton;
-
-        private const string CssSelectorForSearch = @"li.search-cta";
-        private By SearchButton = By.CssSelector(CssSelectorForSearch);
-        //[FindsBy(How = How.CssSelector, Using = CssSelectorForSearch)]
-        //private IWebElement SearchButton;
-
+        #region Search Options
+        private By SailToButton = By.CssSelector(@"li.sail-to");
+        private By SailFromButton = By.CssSelector(@"li.sail-from");
+        private By SailCalendarButton = By.CssSelector(@"li.sail-calendar");
+        private By SailDurationButton = By.CssSelector(@"li.sail-duration");
+        private By SearchButton = By.CssSelector(@"li.search-cta");
         #endregion
 
-        #region Filter panels
-        private const string CssSelectorForSearchOptions = @".search-form-options";
-        private IWebElement SearchOptions;
-
-        private const string IdSailToOptions = @"sailTo";
-        private By SailToOptions = By.Id(IdSailToOptions);
-        //[FindsBy(How = How.Id, Using = IdSailToOptions)]
-        //private IWebElement SailToOptions;
-
-        private const string IdSailFromOptions = @"sailFrom";
-        private By SailFromOptions = By.Id(IdSailFromOptions);
-        //[FindsBy(How = How.Id, Using = IdSailFromOptions)]
-        //private IWebElement SailFromOptions;
-
-        private const string IdSailCalendarOptions = @"sailCalendar";
-        private By SailCalendarOptions = By.Id(IdSailCalendarOptions);
-        //[FindsBy(How = How.Id, Using = IdSailCalendarOptions)]
-        //private IWebElement SailCalendarOptions;
-
-        private const string IdSailDurationOptions = @"sailDuration";
-        private By SailDurationOptions = By.Id(IdSailDurationOptions);
-        //[FindsBy(How = How.Id, Using = IdSailDurationOptions)]
-        //private IWebElement SailDurationOptions;
+        #region Search options panels
+        private By SearchOptions = By.CssSelector(@".search-form-options");
+        private By SailToOptions = By.Id(@"sailTo");
+        private By SailFromOptions = By.Id(@"sailFrom");
+        private By SailCalendarOptions = By.Id(@"sailCalendar");
+        private By SailDurationOptions = By.Id(@"sailDuration");
         #endregion
-
-        private const string CssSelectorForSearchCount = @"div.search-count > span:first-child";
-        private IWebElement SearchCount;
-
-        private string xpathButtonTemplate = @"//*/button[contains(text(), '{0}')]";
+        
+        private By SearchCount = By.CssSelector(@"div.search-count > span:first-child");
+        private string xpathSearchOptionButtonTemplate = @"//*/button[contains(text(), '{0}')]";
 
         public SearchCruisePage(IWebDriver driver) : base(driver, Constants.SearchCruisePageTitle)
         {
@@ -90,60 +46,59 @@ namespace Framework.Pages
         {
             if (improveExperience)
             {
-                if (Helpers.CheckIfElementExist(Driver, Constants.FindBy.Id, IdForImproveShoppingExperienceButtonYes))
-                    ImproveShoppingExperienceButtonYes.Click();
+                if (Helpers.CheckIfElementExist(Driver, ImproveShoppingExperienceButtonYes))
+                    Helpers.ClickOnButton(Driver, ImproveShoppingExperienceButtonYes);
             }
-            if (Helpers.CheckIfElementExist(Driver, Constants.FindBy.Id, IdForImproveShoppingExperienceButtonNo))
-                ImproveShoppingExperienceButtonNo.Click();
+            if (Helpers.CheckIfElementExist(Driver, ImproveShoppingExperienceButtonNo))
+                Helpers.ClickOnButton(Driver, ImproveShoppingExperienceButtonNo);
         }
 
         public void SelectSailTo()
         {
-            Helpers.ClickOnButton(Driver, Constants.FindBy.CssSelector, CssSelectorForSailTo, SailToButton);
+            Helpers.ClickOnButton(Driver, SailToButton);
         }
 
         public void SelectSailFrom()
         {
-            Helpers.ClickOnButton(Driver, Constants.FindBy.CssSelector, CssSelectorForSailFrom, SailFromButton);
+            Helpers.ClickOnButton(Driver, SailFromButton);
         }
 
         public void SelectSailCalendar()
         {
-            Helpers.ClickOnButton(Driver, Constants.FindBy.CssSelector, CssSelectorForSailCalendar, SailCalendarButton);
+            Helpers.ClickOnButton(Driver, SailCalendarButton);
         }
 
         public void SelectSailDuration()
         {
-            Helpers.ClickOnButton(Driver, Constants.FindBy.CssSelector, CssSelectorForSailDuration, SailDurationButton);
+            Helpers.ClickOnButton(Driver, SailDurationButton);
         }
 
         public void Search()
         {
-            Helpers.ClickOnButton(Driver, Constants.FindBy.CssSelector, CssSelectorForSearch, SearchButton);
+            Helpers.ClickOnButton(Driver, SearchButton);
         }
 
-        public void SelectSailToOption(string option)
+        public void SelectOption(string option)
         {
-            Helpers.WaitUntilElementIsVisible(Driver, Constants.FindBy.Id, IdSailToOptions);
+            Helpers.WaitUntilElementIsVisible(Driver, SearchOptions);
 
-            var xPathSelector = string.Format(xpathButtonTemplate, option);
+            var xPathSelector = string.Format(xpathSearchOptionButtonTemplate, option);
             Helpers.WaitUntilElementIsVisible(Driver, Constants.FindBy.XPath, xPathSelector);
 
-            var sailToOption = Helpers.GetDynamicElement(Driver, Constants.FindBy.XPath, xPathSelector);
-            Assert.IsNotNull(sailToOption);
+            var element = Helpers.GetDynamicElement(Driver, Constants.FindBy.XPath, xPathSelector);
+            Assert.IsNotNull(element);
 
-            sailToOption.Click();
+            element.Click();
         }
-
-
+        
         public void ValidateSearch()
         {
-            Helpers.WaitUntilElementIsVisible(Driver, Constants.FindBy.CssSelector, CssSelectorForSearchCount);
+            Helpers.WaitUntilElementIsVisible(Driver, SearchCount);
 
-            SearchCount = Helpers.GetDynamicElement(Driver, Constants.FindBy.CssSelector, CssSelectorForSearchCount);
-            Assert.IsNotNull(SearchCount);
+            var element = Helpers.GetElement(Driver, SearchCount);
+            Assert.IsNotNull(element);
 
-            var result = Helpers.GetSearchResults(SearchCount.Text);
+            var result = Helpers.GetSearchResults(element.Text);
             Assert.That(result, Is.GreaterThan(0));
         }
     }

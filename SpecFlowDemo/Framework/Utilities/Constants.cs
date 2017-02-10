@@ -11,8 +11,10 @@ namespace Framework.Utilities
         public static string ChromeDriver = @"chromedriver.exe"; 
         public static string TestPath = "\\Test\\";
         public static string FrameworkPath = "\\Framework\\";
+
         public static int LoadPageTimeOut = 10;
-        public static int AjaxSearchCruiseTimeOut = 5;
+        public static int WaitForElement = 5;
+        public static int AjaxSearchCruiseTimeOut = 15;
 
         public static string SearchCruisePageTitle = @"Cruises | Carnival Cruise Deals: Caribbean, The Bahamas, Alaska, and Mexico";
         public enum FindBy

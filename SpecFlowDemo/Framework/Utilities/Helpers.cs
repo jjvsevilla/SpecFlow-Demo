@@ -23,25 +23,15 @@ namespace Framework.Utilities
             return result;
         }
 
+        /*
         public static void ClickOnButton(IWebDriver driver, Constants.FindBy findBy, string identifier, By by)
         {
             if (Helpers.CheckIfElementExist(driver, findBy, identifier))
                 Helpers.GetElement(driver, by).Click();
         }
-
-        public static IWebElement GetElement(IWebDriver driver, By by)
-        {
-            try
-            {
-                return driver.FindElement(by);
-            }
-            catch (NoSuchElementException ex)
-            {
-                Console.WriteLine("GetElement > NoSuchElementException ex: {0}", ex.Message);
-                throw;
-            }
-        }
-
+        */
+        
+        #region using enum and string identifier        
         public static IWebElement GetDynamicElement(IWebDriver driver, Constants.FindBy by, string identifier)
         {
             try
@@ -69,6 +59,7 @@ namespace Framework.Utilities
             }
         }
 
+            /*
         public static void WaitUntilElementIsClickable(IWebDriver driver, Constants.FindBy by, string identifier)
         {
             try
@@ -92,7 +83,8 @@ namespace Framework.Utilities
                 throw;
             }
         }
-
+        */
+        
         public static void WaitUntilElementIsVisible(IWebDriver driver, Constants.FindBy by, string identifier)
         {
             try
@@ -140,5 +132,76 @@ namespace Framework.Utilities
                 return false;
             }
         }
+        #endregion
+
+        #region using By identifier
+        public static bool CheckIfElementExist(IWebDriver driver, By by)
+        {
+            try
+            {
+                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(Constants.WaitForElement));
+                wait.Until(ExpectedConditions.ElementExists(by));
+                return true;
+            }
+            catch (NoSuchElementException ex)
+            {
+                Console.WriteLine("CheckIfElementExist > NoSuchElementException ex: {0}", ex.Message);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("CheckIfElementExist > Exception ex: {0}", ex.Message);
+                return false;
+            }
+        }
+
+        public static void ClickOnButton(IWebDriver driver, By by)
+        {
+            if (CheckIfElementExist(driver, by))
+                GetElement(driver, by).Click();
+        }
+
+        public static IWebElement GetElement(IWebDriver driver, By by)
+        {
+            try
+            {
+                return driver.FindElement(by);
+            }
+            catch (NoSuchElementException ex)
+            {
+                Console.WriteLine("GetElement > NoSuchElementException ex: {0}", ex.Message);
+                throw;
+            }
+        }
+
+        public static void WaitUntilElementIsClickable(IWebDriver driver, By by)
+        {            
+            try
+            {
+                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(Constants.AjaxSearchCruiseTimeOut));
+                wait.Until(ExpectedConditions.ElementToBeClickable(by));
+            }
+            catch (ElementNotVisibleException ex)
+            {
+                Console.WriteLine("WaitUntilElementIsVisible > ElementNotVisibleException ex: {0}", ex.Message);
+                throw;
+            }
+        }
+
+        public static void WaitUntilElementIsVisible(IWebDriver driver, By by)
+        {           
+            try
+            {
+                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(Constants.AjaxSearchCruiseTimeOut));
+                wait.Until(ExpectedConditions.ElementIsVisible(by));
+            }
+            catch (ElementNotVisibleException ex)
+            {
+                Console.WriteLine("WaitUntilElementIsVisible > ElementNotVisibleException ex: {0}", ex.Message);
+                throw;
+            }
+        }
+        #endregion
+
     }
 }
